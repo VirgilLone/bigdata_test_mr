@@ -72,6 +72,12 @@ public class WordCount {
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
         // 向集群提交Job，并等待完成
         System.exit(job.waitForCompletion(true) ? 0 : 1);
+
+        // 1.执行mr任务，指定输入输出路径：
+        // hadoop jar ./metriccount_mr-1.0-SNAPSHOT-jar-with-dependencies.jar com.gupao.bigdata.mapreduce.WordCount /test/wordcount/input /test/wordcount/output
+
+        // 2.合并，拉取到本地
+        // hadoop fs -getmerge /test/wordcount/output ./
     }
 
 }
